@@ -12,6 +12,7 @@ interface TileHistoryProps {
 }
 
 export function TileHistory({ items }: TileHistoryProps) {
+  // Shows previous hands as compact cards so players can compare recent totals quickly.
   if (items.length === 0) {
     return <p className="panel__subtle">No previous hands yet.</p>;
   }

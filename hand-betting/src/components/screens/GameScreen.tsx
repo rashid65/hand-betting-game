@@ -8,6 +8,7 @@ import { TileGroup } from '../tiles/TileGroup';
 import { useGame } from '../../hooks/useGame';
 
 export function GameScreen() {
+  // Hosts the active round UI and wires score, deck, hand, and betting controls together.
   const navigate = useNavigate();
   const {
     phase,
@@ -36,6 +37,7 @@ export function GameScreen() {
   }, [navigate, phase]);
 
   const handleExit = (): void => {
+    // Resets the current session and returns the player to the landing page.
     resetGame();
     navigate('/');
   };

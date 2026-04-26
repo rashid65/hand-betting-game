@@ -7,6 +7,7 @@ interface ScoreBarProps {
 }
 
 export function ScoreBar({ score, round, lastBetResult }: ScoreBarProps) {
+  // Summarizes current score progress and last bet result in a compact metric view.
   const lastBetLabel = lastBetResult ? (lastBetResult.isWin ? 'Win' : 'Loss') : 'None';
   const lastBetTone = lastBetResult
     ? lastBetResult.isWin

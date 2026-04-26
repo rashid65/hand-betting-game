@@ -9,6 +9,7 @@ export function DeckCounter({
   discardPileCount,
   reshuffleCount,
 }: DeckCounterProps) {
+  // Displays draw/discard sizes and depletion count so players can track deck pressure.
   return (
     <section className="panel panel--metric">
       <h3 className="panel__title">Deck State</h3>

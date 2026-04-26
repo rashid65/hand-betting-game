@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
 
 export function LandingScreen() {
+  // Provides the main entry point with game goal summary and top score preview.
   const { topFive } = useLeaderboard();
 
   return (

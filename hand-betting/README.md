@@ -1,75 +1,104 @@
-# React + TypeScript + Vite
+# Hand Betting Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web-based Mahjong Hand Betting Game built with React, TypeScript, Vite, and Zustand.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Goal
 
-## React Compiler
+The player bets whether the next hand total will be higher or lower.
+The game ends when either:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Any non-number tile reaches value 0 or 10
+- The draw pile depletes for the third time
 
-Note: This will impact Vite dev & build performances.
+## Features
 
-## Expanding the ESLint configuration
+- Landing page with:
+  - New Game entry point
+  - Top 5 leaderboard preview
+- Game screen with:
+  - Current hand total and Mahjong tile visuals
+  - Bet Higher / Bet Lower actions
+  - Draw pile, discard pile, and depletion counters
+  - Exit game action back to landing
+  - Compact history bar of previous hands
+- Game Over screen with:
+  - Final score and rounds played
+  - Save score flow to leaderboard
+  - Play again / back home actions
+- Leaderboard screen:
+  - Top 5 scores persisted in local storage
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 19
+- TypeScript
+- Vite
+- Zustand (state management + persistence)
+- React Router
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project follows an extension-ready structure:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- src/types: domain and state types
+- src/constants: game configuration/constants
+- src/store: Zustand store, slices, game logic
+- src/hooks: adapters around store behavior
+- src/utils: pure helper functions
+- src/components/tiles: tile rendering and history tile UI
+- src/components/game: game-specific UI blocks
+- src/components/screens: route-level screen UIs
+- src/components/ui: reusable UI primitives
+- src/pages: lightweight route wrappers
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Requirements
+
+- Node.js 20+
+- npm 10+
+
+### Install
+
+1. Open a terminal in this folder:
+   hand-betting
+2. Install dependencies:
+
+   npm install
+
+### Run Development Server
+
+npm run dev
+
+### Build for Production
+
+npm run build
+
+### Preview Production Build
+
+npm run preview
+
+## Scoring and Rules Summary
+
+- Number tiles: value equals face value
+- Non-number tiles (winds/dragons): start at value 5
+- Dynamic scaling:
+  - If a non-number tile is in a winning hand, that tile value +1
+  - If a non-number tile is in a losing hand, that tile value -1
+- Deck reshuffle:
+  - When draw pile is empty, combine discard pile with a fresh deck and shuffle
+  - Third depletion ends the game
+
+## Handwritten vs AI Assistance
+
+I used a mix of handwritten implementation and AI-assisted support.
+
+- Handwritten:
+  - Project wiring, architectural decisions, state flow, and final review
+  - Functional checks and output validation
+- AI-assisted:
+  - Drafting/refining UI sections, copy text, and repetitive refactors
+  - Iterative cleanup and formatting support
+
+All AI-generated output was reviewed, edited, and validated before final submission.

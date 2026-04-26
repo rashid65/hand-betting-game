@@ -13,6 +13,7 @@ export function BettingPanel({
   onExit,
   disabled = false,
 }: BettingPanelProps) {
+  // Provides the core bet actions plus exit control for the active game round.
   return (
     <section className="panel panel--betting">
       <h3 className="panel__title">Place Your Bet</h3>

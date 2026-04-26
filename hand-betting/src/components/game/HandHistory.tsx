@@ -12,6 +12,7 @@ interface HandHistoryProps {
 }
 
 export function HandHistory({ history }: HandHistoryProps) {
+  // Wraps and labels recent hands so players can quickly compare past outcomes.
   return (
     <section className="panel panel--history-shell">
       <h3 className="panel__title">History Bar</h3>

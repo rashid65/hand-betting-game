@@ -10,6 +10,7 @@ const reasonTextByCode = {
 } as const;
 
 export function GameOverScreen() {
+  // Displays end-of-session summary and actions for saving score or starting over.
   const navigate = useNavigate();
   const { score, round, gameOverReason, resetGame } = useGame();
   const { saveScore } = useLeaderboard();
@@ -21,6 +22,7 @@ export function GameOverScreen() {
     : 'The game session has ended.';
 
   const handleSaveAndViewLeaderboard = (): void => {
+    // Saves the player score once and then routes to leaderboard view.
     if (saved) {
       navigate('/leaderboard');
       return;
@@ -35,11 +37,13 @@ export function GameOverScreen() {
   };
 
   const handlePlayAgain = (): void => {
+    // Starts a fresh game run from the game route.
     resetGame();
     navigate('/game');
   };
 
   const handleBackHome = (): void => {
+    // Clears current run state and returns to the landing page.
     resetGame();
     navigate('/');
   };

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
 
 const formatDate = (isoDate: string): string =>
+  // Converts stored ISO timestamps into short, readable dates for leaderboard rows.
   new Date(isoDate).toLocaleDateString(undefined, {
     month: 'short',
     day: 'numeric',
@@ -9,6 +10,7 @@ const formatDate = (isoDate: string): string =>
   });
 
 export function LeaderboardScreen() {
+  // Renders the top five saved scores so players can see current rankings.
   const { topFive } = useLeaderboard();
 
   return (
